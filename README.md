@@ -8,7 +8,7 @@ It implements an **AP Triage Guard** agent that:
 - Applies policy thresholds, and
 - Returns an “OK_TO_PAY / REVIEW / DO_NOT_PAY” decision with a short explanation.
 
-The root entrypoint is `orchestrator.Main`, which starts a simple terminal chat loop.
+The root entrypoint is `orchestrator.Main`, which starts a simple terminal chat loop:
 
 ```mermaid
 flowchart TD
