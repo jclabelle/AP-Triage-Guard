@@ -2,7 +2,6 @@ package config;
 
 import com.google.adk.tools.FunctionTool;
 import com.google.adk.utils.ComponentRegistry;
-import tools.DayOfWeekService;
 import tools.InvoiceRepoTool;
 import tools.PoRepoTool;
 import tools.PolicyThresholdsTool;
@@ -22,11 +21,6 @@ public class RegistrationService {
 
     public void registerFunctionTools(){
         ComponentRegistry registry = ComponentRegistry.getInstance();
-
-        registry.register(
-                "tools.DayOfWeekService#getCurrentDayOfWeek",
-                FunctionTool.create(DayOfWeekService.class, "getCurrentDayOfWeek")
-        );
 
         registry.register(
                 "tools.InvoiceRepoTool#getInvoice",

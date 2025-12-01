@@ -10,7 +10,6 @@ import com.google.adk.sessions.Session;
 import com.google.adk.tools.FunctionTool;
 import com.google.adk.utils.ComponentRegistry;
 import config.RegistrationService;
-import tools.DayOfWeekService;
 import userinterface.ChatUI;
 
 import java.awt.*;
