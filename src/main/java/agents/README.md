@@ -50,5 +50,5 @@ Our wrapper classes:
 # Function tool registrations
 - LlmAgents resolve tools through the ComponentRegistry.
 - For this to work, tools must be registered as FunctionTool instances inside ComponentRegistry under the name used in the YAML.
-- The registration happens once at startup inb Main through config.RegistrationService.registerFunctionTools().
+- The registration happens once at startup in Main through config.RegistrationService.registerFunctionTools().
 - Any new tool must be added to the registration calls inside config.RegistrationService.registerFunctionTools().

@@ -43,4 +43,5 @@ build/
 logs/
 secrets/
 docs/
+src/.env
 gitleaks-report.json
