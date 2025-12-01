@@ -1,0 +1,12 @@
+name: SequentialWorkflowWithCallbacksTest
+agentClass: agents.SequentialWorkflowAgent
+description: "Sequential workflow used to verify callback YAML configuration."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+  - configPath: "hello-world-agent.yaml"
+
+beforeAgentCallbacks:
+  - name: "beforeSequential"
+afterAgentCallbacks:
+  - name: "afterSequential"
+

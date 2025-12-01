@@ -1,0 +1,11 @@
+name: LoopWorkflowUnknownCallbackTest
+agentClass: agents.LoopWorkflowAgent
+description: "Loop workflow with unknown callback name."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+
+maxIterations: 3
+
+beforeAgentCallbacks:
+  - name: "unknownLoopCallback"
+

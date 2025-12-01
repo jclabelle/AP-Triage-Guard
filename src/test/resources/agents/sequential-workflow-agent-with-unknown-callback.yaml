@@ -1,0 +1,9 @@
+name: SequentialWorkflowUnknownCallbackTest
+agentClass: agents.SequentialWorkflowAgent
+description: "Sequential workflow with unknown callback name."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+
+beforeAgentCallbacks:
+  - name: "unknownSequentialCallback"
+

@@ -1,0 +1,7 @@
+name: APParallelLoaders
+agentClass: agents.ParallelWorkflowAgent
+description: "Loads invoice, PO, and policy data in parallel."
+subAgents:
+  - configPath: "ap-invoice-loader.yaml"
+  - configPath: "ap-po-loader.yaml"
+  - configPath: "ap-policy-loader.yaml"

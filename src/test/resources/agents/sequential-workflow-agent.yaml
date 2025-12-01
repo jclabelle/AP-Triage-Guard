@@ -1,0 +1,6 @@
+name: SequentialWorkflowTest
+agentClass: agents.SequentialWorkflowAgent
+description: "Sequential workflow used to verify YAML-based configuration."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+

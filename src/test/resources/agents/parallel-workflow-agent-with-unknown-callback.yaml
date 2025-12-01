@@ -1,0 +1,9 @@
+name: ParallelWorkflowUnknownCallbackTest
+agentClass: agents.ParallelWorkflowAgent
+description: "Parallel workflow with unknown callback name."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+
+beforeAgentCallbacks:
+  - name: "unknownParallelCallback"
+

@@ -1,0 +1,12 @@
+name: ParallelWorkflowWithCallbacksTest
+agentClass: agents.ParallelWorkflowAgent
+description: "Parallel workflow used to verify callback YAML configuration."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+  - configPath: "hello-world-agent.yaml"
+
+beforeAgentCallbacks:
+  - name: "beforeParallel"
+afterAgentCallbacks:
+  - name: "afterParallel"
+

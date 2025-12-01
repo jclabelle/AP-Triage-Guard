@@ -1,0 +1,7 @@
+name: LoopWorkflowTest
+agentClass: agents.LoopWorkflowAgent
+description: "Loop workflow used to verify YAML-based configuration."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+maxIterations: 3
+

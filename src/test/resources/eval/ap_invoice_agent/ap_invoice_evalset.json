@@ -1,0 +1,113 @@
+{
+  "eval_set_id": "ap_invoice_evalset_v1",
+  "name": "AP invoice agent smoke tests",
+  "description": "Simple tests for the AP invoice vs PO decision agent.",
+  "eval_cases": [
+    {
+      "eval_id": "case_ok_to_pay",
+      "session_input": {
+        "app_name": "APInvoicePipeline",
+        "user_id": "test-user-1",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv1",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Please check invoice INV-1001 and tell me if it is OK to pay."
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Decision: OK_TO_PAY"
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "1",
+                "name": "getInvoice",
+                "args": {
+                  "invoiceId": "INV-1001"
+                }
+              },
+              {
+                "id": "2",
+                "name": "getPoForInvoice",
+                "args": {
+                  "invoiceId": "INV-1001"
+                }
+              },
+              {
+                "id": "3",
+                "name": "getThresholds",
+                "args": {}
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "case_review_high_amount",
+      "session_input": {
+        "app_name": "APInvoicePipeline",
+        "user_id": "test-user-2",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv1",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Can you review invoice INV-2001 before we pay it?"
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Decision: REVIEW"
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "1",
+                "name": "getInvoice",
+                "args": {
+                  "invoiceId": "INV-2001"
+                }
+              },
+              {
+                "id": "2",
+                "name": "getPoForInvoice",
+                "args": {
+                  "invoiceId": "INV-2001"
+                }
+              },
+              {
+                "id": "3",
+                "name": "getThresholds",
+                "args": {}
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ]
+    }
+  ]
+}

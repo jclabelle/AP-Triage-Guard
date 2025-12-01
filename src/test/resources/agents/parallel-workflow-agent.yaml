@@ -1,0 +1,6 @@
+name: ParallelWorkflowTest
+agentClass: agents.ParallelWorkflowAgent
+description: "Parallel workflow used to verify YAML-based configuration."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+

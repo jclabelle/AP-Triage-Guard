@@ -1,0 +1,96 @@
+{
+  "eval_set_id": "hello_world_basic",
+  "name": "Hello world basic regression",
+  "description": "Two simple conversations that exercise the hello_world agent.",
+  "eval_cases": [
+    {
+      "eval_id": "session_01",
+      "session_input": {
+        "app_name": "APTriageGuard",
+        "user_id": "user",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "e-001",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              { "text": "What can you do?" }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "I can roll dice of different sizes and check whether numbers are prime."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "session_02",
+      "session_input": {
+        "app_name": "APTriageGuard",
+        "user_id": "user",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "e-002",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Roll a 10-sided die twice, then tell me if 9 is prime."
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "I rolled 4 and 7 on a 10-sided die, and 9 is not prime."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-run-1",
+                "name": "roll_die",
+                "args": { "sides": 10 }
+              },
+              {
+                "id": "adk-run-2",
+                "name": "roll_die",
+                "args": { "sides": 10 }
+              },
+              {
+                "id": "adk-run-3",
+                "name": "check_prime",
+                "args": { "nums": [9] }
+              }
+            ],
+            "intermediate_responses": [
+              {
+                "agentName": "data_processing_agent",
+                "parts": [
+                  {
+                    "text": "I rolled a 10-sided die twice and got 4 and 7."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

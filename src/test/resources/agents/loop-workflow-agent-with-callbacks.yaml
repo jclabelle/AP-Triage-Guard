@@ -1,0 +1,13 @@
+name: LoopWorkflowWithCallbacksTest
+agentClass: agents.LoopWorkflowAgent
+description: "Loop workflow used to verify callback YAML configuration."
+subAgents:
+  - configPath: "hello-world-agent.yaml"
+
+maxIterations: 3
+
+beforeAgentCallbacks:
+  - name: "beforeLoop"
+afterAgentCallbacks:
+  - name: "afterLoop"
+

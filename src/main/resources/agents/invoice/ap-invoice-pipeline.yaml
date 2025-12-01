@@ -1,0 +1,8 @@
+name: APInvoicePipeline
+agentClass: agents.SequentialWorkflowAgent
+description: "Triage and decision workflow for AP invoices."
+subAgents:
+  - configPath: "ap-invoice-intake.yaml"
+  - configPath: "ap-parallel-loaders.yaml"
+  - configPath: "ap-comparison-analysis.yaml"
+  - configPath: "ap-reply-formatter.yaml"
