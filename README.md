@@ -170,3 +170,55 @@ From the `AP-Triage-Guard` project root:
   ```
 
   to confirm that no secrets have been added to the git history.
+
+## 6. Project Structure
+```mermaid
+graph TD
+  root[AP-Triage-Guard]
+
+  root --> docs[docs/]
+  root --> logs[logs/]
+  root --> secrets[secrets/]
+  root --> src[src/]
+
+  src --> src_main[src/main/]
+  src --> src_test[src/test/]
+
+  %% src/main/java
+  src_main --> main_java[src/main/java/]
+  src_main --> main_resources[src/main/resources/]
+
+  main_java --> agents[agents]
+  main_java --> config[config]
+  main_java --> constants[constants]
+  main_java --> eval[eval]
+  main_java --> helpers[helpers]
+  main_java --> observability[observability]
+  main_java --> orchestrator[orchestrator]
+  main_java --> tools[tools]
+  main_java --> ui[userinterface]
+
+  eval --> eval_config[eval/config]
+  eval --> eval_metrics[eval/metrics]
+  eval --> eval_model[eval/model]
+  eval_model --> eval_results[eval/model/results]
+  eval --> eval_runner[eval/runner]
+
+  %% src/main/resources
+  main_resources --> res_agents[src/main/resources/agents/]
+  res_agents --> res_invoice[agents/invoice/]
+  main_resources --> res_eval[src/main/resources/eval/]
+
+  %% src/test
+  src_test --> test_java[src/test/java/]
+  src_test --> test_resources[src/test/resources/]
+
+  test_java --> test_agents[agents]
+  test_java --> test_eval[eval]
+
+  test_resources --> test_res_agents[agents/]
+  test_resources --> test_res_eval[eval/]
+  test_res_eval --> test_res_eval_ap[eval/ap_invoice_agent/]
+  test_res_eval --> test_res_eval_hw[eval/hello_world_agent/]
+```
+
