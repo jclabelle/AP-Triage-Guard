@@ -10,6 +10,36 @@ It implements an **AP Triage Guard** agent that:
 
 The root entrypoint is `orchestrator.Main`, which starts a simple terminal chat loop.
 
+```mermaid
+flowchart TD
+U[User] -->|message| UI[ChatUI]
+UI --> R[Runner]
+R --> P[APInvoicePipeline<br/>SequentialWorkflowAgent]
+
+      subgraph Seq[Sequential workflow]
+          P --> A1[ap_invoice_intake<br/>LlmAgent<br/>output: invoice_id]
+
+          A1 --> A2[APParallelLoaders<br/>ParallelWorkflowAgent]
+
+          subgraph Par[Parallel loaders]
+              direction LR
+              A2 --> L1[ap_invoice_loader<br/>LlmAgent<br/>tool: InvoiceRepoTool#getInvoice<br/>output: invoice_data_json]
+              A2 --> L2[ap_po_loader<br/>LlmAgent<br/>tool: PoRepoTool#getPoForInvoice<br/>output: po_data_json]
+              A2 --> L3[ap_policy_loader<br/>LlmAgent<br/>tool: PolicyThresholdsTool#getThresholds<br/>output: policy_thresholds_json]
+          end
+
+          L1 --> A3
+          L2 --> A3
+          L3 --> A3
+
+          A3[ap_comparison_analysis<br/>LlmAgent<br/>inputs: invoice_data_json,<br/>po_data_json, policy_thresholds_json<br/>output: ap_decision_json]
+
+          A3 --> A4[ap_reply_formatter<br/>LlmAgent<br/>input: ap_decision_json<br/>output: formatted_reply]
+      end
+
+      A4 --> UI
+      UI -->|formatted_reply| U
+```
 ---
 
 ## 1. Prerequisites
