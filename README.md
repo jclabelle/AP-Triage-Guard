@@ -1,6 +1,6 @@
-# Minimal ADK Java Agent – AP Triage Guard
+# ADK Java Agent – AP Triage Guard
 
-This project is a minimal Java 25 application built on Google’s Agent Development Kit (ADK).  
+This project is a Java 25 application built on Google’s Agent Development Kit (ADK).  
 It implements an **AP Triage Guard** agent that:
 
 - Takes natural‑language AP questions (e.g., “Can you check invoice INV‑1001?”),
@@ -31,7 +31,7 @@ You can export them in your shell:
 ```bash
 export GOOGLE_API_KEY="your-gemini-api-key"
 export GOOGLE_APPLICATION_CREDENTIALS="/absolute/path/to/service-account.json"
-export OTEL_RESOURCE_ATTRIBUTES="service.name=minimal-agent,gcp.project_id=your-gcp-project-id"
+export OTEL_RESOURCE_ATTRIBUTES="service.name=ap-triage-guard,gcp.project_id=your-gcp-project-id"
 ```
 
 Alternatively, use the provided `.env` template:
@@ -95,7 +95,7 @@ There are two runtime modes:
      - `OTEL_RESOURCE_ATTRIBUTES` – **recommended**.  
        Used to tag spans/metrics with service name and project:
        ```bash
-       export OTEL_RESOURCE_ATTRIBUTES="service.name=minimal-agent,gcp.project_id=your-gcp-project-id"
+       export OTEL_RESOURCE_ATTRIBUTES="service.name=ap-triage-guard,gcp.project_id=your-gcp-project-id"
        ```
      - Alternatively, `GOOGLE_CLOUD_PROJECT` or `GCLOUD_PROJECT` can be set; `OpenTelemetryBootstrap` uses these as fallbacks for the project ID.
 
@@ -106,7 +106,7 @@ There are two runtime modes:
 
 ## 3. Running the app
 
-From the `minimal-agent` project root:
+From the `AP-Triage-Guard` project root:
 
 1. **Install dependencies & compile:**
 
